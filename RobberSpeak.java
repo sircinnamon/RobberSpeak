@@ -2,6 +2,8 @@ public class RobberSpeak
 {
 	//Translates "Robberspeak" (Rovarspraket)
 	//DailyProgrammer Easy challenge #212
+	//javac -encoding UTF-8 RobberSpeak.java
+	public static final String REGEX = "[^aeiouyåäöAEIOUYÅÄÖ]";
 	public static void main(String[] args)
 	{
 		if(args.length < 2)
@@ -34,7 +36,7 @@ public class RobberSpeak
 		String output = "";
 		for(char c : input)
 		{
-			if((""+c).matches("[^aeiou]") && Character.isLetter(c))
+			if((""+c).matches(REGEX) && Character.isLetter(c))
 			{
 				output = output + c + "o" + c;
 			}
@@ -57,7 +59,7 @@ public class RobberSpeak
 			{
 				output = output+input[i];
 			}
-			else if(input[i] == 'o' && input[i-1] == input[i+1] && (""+input[i-1]).matches("[^aeiou]") && Character.isLetter(input[i-1]))
+			else if(input[i] == 'o' && input[i-1] == input[i+1] && (""+input[i-1]).matches(REGEX) && Character.isLetter(input[i-1]))
 			{
 				input[i+1] = ' ';
 				i++;
